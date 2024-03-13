@@ -20,3 +20,744 @@ progress::-webkit-progress-value {
     @apply !capitalize;
   }
 }
+
+
+
+/* index.css------------------------------------------ */
+ /* @import "components.css"; */
+ @font-face {
+  font-family: 'Reey';
+  src: url('/assets/fonts/reey-regular-webfont.woff2') format('woff2'), url('/assets/fonts/reey-regular-webfont.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .btn {
+      @apply inline-block rounded-2xl bg-primary py-4 px-7 text-center text-sm font-bold uppercase text-black transition  hover:scale-105 hover:bg-secondary hover:text-white;
+  }
+  .heading {
+      @apply mb-10 lg:mb-14;
+  }
+  .heading h6 {
+      @apply mb-3 text-lg font-bold  text-primary sm:mb-4;
+  }
+  .heading h4 {
+      @apply text-2xl font-bold text-black dark:text-white sm:text-3xl lg:text-[40px] lg:!leading-[50px];
+  }
+  .portfolio-filter .filter.active button,
+  .upcoming-party-filter .filter.active button {
+      @apply bg-secondary text-white;
+  }
+  .upcoming-party-filter .filter.active button span {
+      @apply text-white;
+  }
+  .home-filter .filter.active button {
+      @apply text-secondary;
+  }
+  .realestate-filter .filter.active button {
+      @apply scale-105 bg-primary text-white;
+  }
+
+  .photography-filter .filter.active button {
+      @apply bg-secondary text-white;
+  }
+
+  /* NFT Landing Page CSS */
+  .nft-filters li.active button {
+      @apply bg-black text-white dark:bg-white dark:text-black;
+  }
+  .heading-gradiant {
+      @apply mb-12;
+  }
+  .heading-gradiant h4 {
+      @apply relative z-[1] text-3xl font-black uppercase leading-[50px] text-black before:absolute before:top-5 before:z-[-1] before:h-6
+      before:w-[100px] before:bg-primary/20 ltr:pl-0.5 ltr:before:left-0 ltr:before:right-auto rtl:pr-0.5 rtl:before:right-0 rtl:before:left-auto dark:text-white md:text-[40px] md:leading-[60px] md:before:h-[30px];
+  }
+  .heading-gradiant h4 span {
+      @apply bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent;
+  }
+  .heading-gradiant p {
+      @apply mt-3 font-bold;
+  }
+  /* --------- NFT - END -------- */
+
+  /* Filter */
+
+  .project.hidden {
+      animation: hide 1s ease 0s 1 normal forwards;
+      transform-origin: center;
+  }
+  .project.block {
+      animation: show 1s ease 0s 1 normal forwards;
+      transform-origin: center;
+  }
+
+  @keyframes hide {
+      0% {
+          transform: scale(1);
+          visibility: visible;
+      }
+      100% {
+          transform: scale(0);
+          visibility: hidden;
+      }
+  }
+  @keyframes show {
+      0% {
+          transform: scale(0);
+          visibility: hidden;
+      }
+      100% {
+          transform: scale(1);
+          visibility: visible;
+      }
+  }
+
+  /* Light - Dark Mode */
+
+  .dark .light-mode-btn {
+      @apply block;
+  }
+  .dark .dark-mode-btn {
+      @apply hidden;
+  }
+
+  /* Header */
+
+  header .menus {
+      @apply fixed top-0 z-[52] h-screen w-full max-w-sm gap-9 bg-white transition-all duration-500 ltr:-right-full rtl:-left-full dark:bg-gray-dark lg:static lg:h-auto lg:max-w-none lg:bg-transparent dark:lg:bg-transparent;
+  }
+  header .menus > ul {
+      @apply relative flex  flex-col divide-y divide-gray/10  font-bold text-black  lg:flex-row lg:items-center lg:gap-11 lg:divide-y-0  lg:p-0 lg:text-white;
+  }
+  header .menus > ul li > a {
+      @apply flex items-center justify-between py-4 px-4 transition hover:text-secondary dark:text-white dark:hover:text-secondary lg:px-0 lg:py-10 hover:lg:scale-110;
+  }
+  header .menus > ul li > a.active {
+      @apply text-secondary lg:scale-110;
+  }
+  header .menus .submenu {
+      @apply invisible z-50 mt-5 hidden grid-cols-1 gap-x-4 rounded-lg py-3 text-sm font-medium text-black opacity-0 transition-all dark:text-white lg:absolute lg:top-full lg:grid lg:min-w-max rtl:lg:translate-x-1/4 ltr:lg:-translate-x-1/4 lg:grid-cols-3 lg:bg-[#F0F4F7] lg:shadow-lg lg:dark:bg-gray-dark rtl:xl:-right-1/2 ltr:xl:-left-1/2 xl:grid-cols-4;
+  }
+  .submenu {
+      @apply group-hover:visible group-hover:mt-0 group-hover:grid group-hover:opacity-100;
+  }
+  header .menus .submenu a {
+      @apply block py-2.5 px-8 transition hover:text-secondary lg:px-5 hover:lg:scale-105;
+  }
+  header .menus .submenu a.active {
+      @apply text-secondary lg:scale-105;
+  }
+
+  .text-stroke {
+      -webkit-text-fill-color: transparent;
+      -webkit-text-stroke-width: 2px;
+      -webkit-text-stroke-color: #222a36;
+  }
+
+  /* Creative Agency Page CSS */
+  .text-color {
+      @apply bg-[url(/assets/images/creative/color.png)] bg-clip-text bg-top bg-no-repeat text-transparent;
+  }
+}
+
+/* responsive menu */
+
+header .menus.open-menus {
+  @apply overflow-y-auto ltr:right-0 rtl:left-0;
+}
+
+/* sticky header */
+
+.sticky-header {
+  @apply bg-black shadow-lg;
+}
+
+/* lightbox */
+
+.fancybox__content > .carousel__button.is-close {
+  @apply rtl:left-0;
+}
+
+/* accordion */
+
+.ac.is-active .ac-trigger .trigger-icon {
+  @apply !border-black !text-black dark:!border-white dark:!text-white;
+}
+
+.ac.is-active .ac-trigger .trigger-icon svg path {
+  @apply first:hidden;
+}
+.open-search-bar {
+  @apply w-full;
+}
+
+/* apex chart */
+
+.dark .apexcharts-canvas .apexcharts-tooltip.apexcharts-theme-light,
+.dark .apexcharts-canvas .apexcharts-xaxistooltip.apexcharts-theme-light {
+  box-shadow: none;
+  @apply border-[#050717cc] bg-[#050717cc] text-white;
+}
+
+.dark .apexcharts-canvas .apexcharts-xaxistooltip-bottom:before,
+.dark .apexcharts-canvas .apexcharts-xaxistooltip-bottom:after {
+  @apply border-b-[#050717cc];
+}
+
+.dark .apexcharts-canvas .apexcharts-tooltip-series-group.apexcharts-active {
+  @apply text-white;
+}
+
+.dark .apexcharts-canvas .apexcharts-tooltip.apexcharts-theme-light .apexcharts-tooltip-title {
+  @apply border-[#060818] bg-[#060818];
+}
+
+.dark .apexcharts-canvas .apexcharts-tooltip.apexcharts-theme-light {
+  box-shadow: none;
+}
+
+[dir='rtl'] .apexcharts-tooltip-marker {
+  @apply mr-0 ml-2.5;
+}
+/* Hotel & resort */
+.book-form input[type='date']::-webkit-calendar-picker-indicator {
+  @apply invert;
+}
+
+/* Photography our Team */
+
+.our-team .swiper-wrapper {
+  @apply items-center;
+}
+
+.our-team .swiper-slide img {
+  @apply h-[390px];
+}
+
+.our-team .swiper-slide.swiper-slide-prev img,
+.our-team .swiper-slide.swiper-slide-next img {
+  @apply h-[478px];
+}
+
+.our-team .swiper-slide.swiper-slide-active img {
+  @apply h-[566px];
+}
+
+@media screen and (max-width: 1200px) {
+  .our-team .swiper-slide img {
+      @apply h-[300px];
+  }
+
+  .our-team .swiper-slide.swiper-slide-prev img,
+  .our-team .swiper-slide.swiper-slide-next img {
+      @apply h-[400px];
+  }
+
+  .our-team .swiper-slide.swiper-slide-active img {
+      @apply h-[500px];
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .our-team .swiper-slide img {
+      @apply !h-[300px];
+  }
+}
+
+
+
+
+/* globalcss --------------------------------------------------------*/
+/* Start purging... */
+@tailwind components;
+
+@font-face {
+    font-family: 'reey';
+    src: url('/assets/fonts/reey-regular-webfont.woff2') format('woff2'), url('/assets/fonts/reey-regular-webfont.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* @tailwind base;
+@tailwind utilities; */
+
+@layer components {
+
+    /* .btn {
+        @apply inline-block rounded-2xl bg-primary py-4 px-7 text-center text-sm font-extrabold uppercase text-black transition  hover:scale-105 hover:bg-secondary hover:text-white;
+    } */
+    .heading {
+        @apply mb-10 lg:mb-14;
+    }
+    .heading h6 {
+        @apply mb-3 text-lg font-bold text-primary sm:mb-4;
+    }
+    .heading h4 {
+        @apply text-2xl font-bold text-black dark:text-white sm:text-3xl lg:text-[40px] lg:!leading-[50px];
+    }
+    .portfolio-filter .filter.active button,
+    .upcoming-party-filter .filter.active button {
+        @apply bg-secondary text-white;
+    }
+    .upcoming-party-filter .filter.active button span {
+        @apply text-white;
+    }
+    .home-filter .filter.active button {
+        @apply text-secondary;
+    }
+    .realestate-filter .filter.active button {
+        @apply scale-105 bg-primary text-white;
+    }
+
+    .photography-filter .filter.active button {
+        @apply bg-secondary text-white;
+    }
+
+    /* NFT Landing Page CSS */
+    .nft-filters li.active button {
+        @apply bg-black text-white dark:bg-white dark:text-black;
+    }
+    .heading-gradiant {
+        @apply mb-12;
+    }
+    .heading-gradiant h4 {
+        @apply relative z-[1] text-3xl font-black uppercase leading-[50px] text-black before:absolute before:top-5 before:z-[-1] before:h-6
+        before:w-[100px] before:bg-primary/20 ltr:pl-0.5 ltr:before:left-0 ltr:before:right-auto rtl:pr-0.5 rtl:before:right-0 rtl:before:left-auto dark:text-white md:text-[40px] md:leading-[60px] md:before:h-[30px];
+    }
+    .heading-gradiant h4 span {
+        @apply bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent;
+    }
+    .heading-gradiant p {
+        @apply mt-3 font-bold;
+    }
+    /* --------- NFT - END -------- */
+
+    /* Filter */
+
+    .project.hidden {
+        animation: hide 1s ease 0s 1 normal forwards;
+        transform-origin: center;
+    }
+    .project.block {
+        animation: show 1s ease 0s 1 normal forwards;
+        transform-origin: center;
+    }
+   
+    @keyframes hide {
+        0% {
+            transform: scale(1);
+            visibility: visible;
+        }
+        100% {
+            transform: scale(0);
+            visibility: hidden;
+        }
+    }
+    @keyframes show {
+        0% {
+            transform: scale(0);
+            visibility: hidden;
+        }
+        100% {
+            transform: scale(1);
+            visibility: visible;
+        }
+    }
+
+    /* Light - Dark Mode */
+
+    .dark .light-mode-btn {
+        @apply block;
+    }
+    .dark .dark-mode-btn {
+        @apply hidden;
+    }
+
+    /* Header */
+
+    header .menus {
+        @apply fixed top-0 z-[52] h-screen w-full max-w-sm gap-9 bg-white transition-all duration-500 ltr:-right-full rtl:-left-full dark:bg-gray-dark lg:static lg:h-auto lg:max-w-none lg:bg-transparent dark:lg:bg-transparent;
+    }
+    header .menus > ul {
+        @apply relative flex  flex-col divide-y divide-gray/10  font-bold text-black  lg:flex-row lg:items-center lg:gap-11 lg:divide-y-0  lg:p-0 lg:text-white;
+    }
+    header .menus > ul li > a {
+        @apply flex items-center justify-between py-4 px-4 transition hover:text-secondary dark:text-white dark:hover:text-secondary lg:px-0 lg:py-10 hover:lg:scale-110;
+    }
+    header .menus > ul li > a.active {
+        @apply text-secondary lg:scale-110;
+    }
+    header .menus .submenu {
+        @apply invisible z-50 mt-5 hidden grid-cols-1 gap-x-4 rounded-lg py-3 text-sm font-medium text-black opacity-0 transition-all dark:text-white lg:absolute lg:top-full lg:grid lg:min-w-max rtl:lg:translate-x-1/4 ltr:lg:-translate-x-1/4 lg:grid-cols-3 lg:bg-[#F0F4F7] lg:shadow-lg lg:dark:bg-gray-dark rtl:xl:-right-1/2 ltr:xl:-left-1/2 xl:grid-cols-4;
+    }
+    .submenu {
+        @apply group-hover:visible group-hover:mt-0 group-hover:grid group-hover:opacity-100;
+    }
+    header .menus .submenu a {
+        @apply block py-2.5 px-8 transition hover:text-secondary lg:px-5 hover:lg:scale-105;
+    }
+    header .menus .submenu a.active {
+        @apply text-secondary lg:scale-105;
+    }
+
+    .text-stroke {
+        -webkit-text-fill-color: transparent;
+        -webkit-text-stroke-width: 2px;
+        -webkit-text-stroke-color: #222a36;
+    }
+
+    /* Creative Agency Page CSS */
+    .text-color {
+        @apply bg-[url(/assets/images/creative/color.png)] bg-clip-text bg-top bg-no-repeat text-transparent;
+    }
+    /* Global Link Style */
+    a {
+        @apply outline-primary-200 outline-2 active:outline-none;
+    }
+
+    /* NavigationMenu.tsx */
+    .NavigationMenu {
+        @apply flex-1 space-x-1 lg:space-x-2.5 dark:text-gray-300
+        items-center flex-wrap flex;
+    }
+
+    .NavigationMenu.VerticalNavigationMenu {
+        @apply flex flex-row justify-between space-x-2 lg:justify-start
+        lg:flex-col lg:space-x-0 lg:space-y-1 items-start;
+    }
+
+    /* NavigationItem.tsx */
+    .NavigationItem {
+        @apply leading-loose
+        transition-colors dark:text-gray-300
+        text-gray-600 flex items-center text-sm;
+    }
+
+    .NavigationItem a {
+        @apply p-1 lg:px-2.5 flex flex-col lg:flex-row items-center justify-center lg:justify-start rounded-md font-medium w-full transition-colors outline-primary-200 dark:outline-primary-500/70;
+    }
+
+    .PillNavigationMenu .NavigationItemActive a {
+        @apply bg-gray-50 text-gray-600 text-current dark:bg-black-300 dark:text-white;
+    }
+
+    .PillNavigationMenu .NavigationItemNotActive a {
+        @apply hover:bg-gray-50 active:bg-gray-100 text-gray-500 dark:text-gray-300 dark:hover:bg-black-400 dark:active:bg-black-300;
+    }
+
+    .SecondaryNavigationMenu .NavigationItemActive a {
+        @apply bg-transparent font-semibold;
+    }
+
+    .BorderedNavigationMenu {
+        @apply border-b border-gray-100 dark:border-black-200;
+    }
+
+    .BorderedNavigationMenu .NavigationItem {
+        @apply h-14 border-b-[0.15rem] relative border-transparent top-[1px];
+    }
+
+    .BorderedNavigationMenu .NavigationItemActive {
+        @apply border-primary-500 text-current font-semibold dark:text-white bg-transparent rounded-none;
+    }
+
+    .BorderedNavigationMenu .NavigationItemNotActive a {
+        @apply hover:bg-gray-50 dark:hover:bg-black-300 transition-colors rounded-lg;
+    }
+
+    .NavigationItemNotActive {
+        @apply active:text-current text-gray-600 dark:text-gray-300
+        hover:text-current dark:hover:text-white;
+    }
+
+    .NavigationItemActive {
+        @apply font-semibold text-black-600 dark:text-white;
+    }
+
+    .NavigationItem a[aria-disabled='true'] {
+        @apply cursor-not-allowed text-gray-300 dark:text-gray-600;
+    }
+
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:active,
+    input:-webkit-autofill:focus {
+        @apply border-none m-[-1px] shadow-sm;
+    }
+
+    .TabsList {
+        @apply flex px-1 py-1 dark:bg-black-500 grid grid-cols-3 gap-1;
+    }
+
+    /* Tab.tsx */
+    .Tab {
+        @apply NavigationItem flex flex-1 justify-center;
+    }
+
+    .Tab:not(.TabSelected) {
+        @apply hover:bg-gray-50 dark:active:bg-black-300
+        cursor-pointer dark:bg-black-500 dark:hover:bg-black-400;
+    }
+
+    .TabSelected,
+    button.TabSelected {
+        @apply NavigationItemActive dark:text-gray-100;
+    }
+
+    /* Documentation */
+    .DocumentationSidebarContainer {
+        @apply mt-6 sticky inset-0 hidden md:flex overflow-y-auto h-screen;
+    }
+
+    .DocumentationSidebarItem {
+        @apply flex dark:active:bg-black-400 active:bg-gray-100 flex-1
+        text-sm text-gray-500 dark:text-gray-400 hover:text-current rounded-md
+        py-1.5 px-2 transition-colors duration-300 w-full;
+    }
+
+    .DocumentationSidebarItemContainer:last-child {
+        @apply pb-24;
+    }
+
+    .DocumentationSidebarItemSelected {
+        @apply font-semibold text-current dark:text-primary-500 bg-primary-500/5;
+    }
+
+    .DocumentationSidebarItemNotSelected {
+        @apply hover:border-l-primary-400 dark:hover:text-white
+        dark:border-l-black-400 font-medium border-l-gray-50;
+    }
+
+    .Toggle {
+        @apply h-6 w-12 cursor-pointer appearance-none
+        bg-gray-600 dark:bg-gray-300 duration-300 ease-in-out rounded-xl;
+
+        transition: all 0.25s ease-in-out;
+        box-shadow: calc(1.5rem * -1) 0 0 2px #efefef inset, 0 0 0 2px #efefef inset;
+    }
+
+    .dark .Toggle {
+        box-shadow: calc(1.5rem * -1) 0 0 2px #525252 inset, 0 0 0 2px #525252 inset;
+    }
+
+    .Toggle:hover {
+        box-shadow: calc(1.5rem * -1) 0 0 2px #ddd inset, 0 0 0 2px #ddd inset;
+    }
+
+    .dark .Toggle:hover {
+        box-shadow: calc(1.5rem * -1) 0 0 2px #666 inset, 0 0 0 2px #666 inset;
+    }
+
+    .Toggle:focus-visible {
+        @apply outline outline-primary-500;
+
+        outline-offset: 2px;
+    }
+
+    .Toggle:checked {
+        @apply border-opacity-100 bg-opacity-100
+        bg-primary-500 border-primary-400;
+
+        box-shadow: 1.5rem 0 0 2px #eee inset, 0 0 0 2px #eee inset;
+    }
+
+    .dark .Toggle:checked {
+        box-shadow: 1.5rem 0 0 2px #444 inset, 0 0 0 2px #444 inset;
+    }
+
+    .Stepper {
+        @apply flex flex-col md:flex-row md:space-x-2 justify-between shadow-sm
+        px-2 py-1 rounded-md dark:border-black-400 dark:bg-black-400;
+    }
+
+    .StepperDivider {
+        @apply flex bg-gray-300 dark:bg-black-200 h-full
+        ml-[1.5rem] md:ml-0 min-h-[8px] md:min-h-0 w-[2px] md:w-full md:h-[2px]
+        flex-1 transition-colors md:self-center;
+    }
+
+    .StepperDivider:last-child {
+        display: none;
+    }
+
+    .StepperStepSelected + .StepperDivider,
+    .StepperStep.CompletedStep + .StepperDivider {
+        @apply bg-primary-500 text-primary-contrast;
+    }
+
+    .StepperStep:not(.StepperStepSelected):not(.CompletedStep):hover + .StepperDivider {
+        @apply bg-primary-500/40;
+    }
+
+    .StepperStepCircle {
+        @apply rounded-full w-[35px] h-[35px] shadow duration-150
+        font-bold flex justify-center items-center shadow-none
+        bg-gray-200 dark:bg-black-200 transition-colors;
+    }
+
+    .StepperStep.StepperStepSelected {
+        @apply dark:text-white text-gray-600;
+    }
+
+    .StepperStepSelected .StepperStepCircle {
+        @apply bg-primary-500 text-white;
+    }
+
+    .StepperStep {
+        @apply flex items-center space-x-4 dark:text-gray-400 text-gray-600
+        transition-colors p-2 cursor-default outline-none;
+    }
+
+    .StepperStep.StepperStepActionable.StepperStepClickable:not(.StepperStepSelected):not([disabled]):hover {
+        @apply dark:text-primary-contrast text-gray-600 cursor-pointer;
+    }
+
+    .StepperStep.StepperStepActionable.StepperStepClickable:not(.StepperStepSelected):not([disabled]):hover .StepperStepCircle {
+        @apply bg-primary-500 text-primary-contrast;
+    }
+
+    .StepperStep:not(.StepperStepSelected):disabled,
+    .StepperStep:not(.Actionable):not(.StepperStepSelected) {
+        @apply dark:text-gray-500 text-gray-400;
+    }
+
+    .Table {
+        @apply bg-white dark:bg-black-500 p-1 w-full border-collapse rounded-lg table-fixed border-spacing-0;
+    }
+
+    .Table thead {
+        @apply sticky top-0 m-0 bg-white dark:bg-black-500;
+    }
+
+    .Table th {
+        @apply text-left py-4 uppercase font-bold text-gray-600
+        dark:text-gray-400 text-xs border-b border-gray-200 dark:border-black-300;
+    }
+
+    .Table tr {
+        @apply border-b border-gray-100 dark:border-black-400;
+    }
+
+    .Table tr:last-child {
+        @apply border-transparent;
+    }
+
+    .Table td {
+        @apply py-2.5 text-sm;
+    }
+
+
+    /* responsive menu */
+
+header .menus.open-menus {
+    @apply overflow-y-auto ltr:right-0 rtl:left-0;
+}
+
+/* sticky header */
+
+.sticky-header {
+    @apply bg-black shadow-lg;
+}
+
+/* lightbox */
+
+.fancybox__content > .carousel__button.is-close {
+    @apply rtl:left-0;
+}
+
+/* accordion */
+
+.ac.is-active .ac-trigger .trigger-icon {
+    @apply !border-black !text-black dark:!border-white dark:!text-white;
+}
+
+.ac.is-active .ac-trigger .trigger-icon svg path {
+    @apply first:hidden;
+}
+.open-search-bar {
+    @apply w-full;
+}
+
+/* apex chart */
+
+.dark .apexcharts-canvas .apexcharts-tooltip.apexcharts-theme-light,
+.dark .apexcharts-canvas .apexcharts-xaxistooltip.apexcharts-theme-light {
+    box-shadow: none;
+    @apply border-[#050717cc] bg-[#050717cc] text-white;
+}
+
+.dark .apexcharts-canvas .apexcharts-xaxistooltip-bottom:before,
+.dark .apexcharts-canvas .apexcharts-xaxistooltip-bottom:after {
+    @apply border-b-[#050717cc];
+}
+
+.dark .apexcharts-canvas .apexcharts-tooltip-series-group.apexcharts-active {
+    @apply text-white;
+}
+
+.dark .apexcharts-canvas .apexcharts-tooltip.apexcharts-theme-light .apexcharts-tooltip-title {
+    @apply border-[#060818] bg-[#060818];
+}
+
+.dark .apexcharts-canvas .apexcharts-tooltip.apexcharts-theme-light {
+    box-shadow: none;
+}
+
+[dir='rtl'] .apexcharts-tooltip-marker {
+    @apply mr-0 ml-2.5;
+}
+/* Hotel & resort */
+.book-form input[type='date']::-webkit-calendar-picker-indicator {
+    @apply invert;
+}
+
+/* Photography our Team */
+
+.our-team .swiper-wrapper {
+    @apply items-center;
+}
+
+.our-team .swiper-slide img {
+    @apply h-[390px];
+}
+
+.our-team .swiper-slide.swiper-slide-prev img,
+.our-team .swiper-slide.swiper-slide-next img {
+    @apply h-[478px];
+}
+
+.our-team .swiper-slide.swiper-slide-active img {
+    @apply h-[566px];
+}
+
+@media screen and (max-width: 1200px) {
+    .our-team .swiper-slide img {
+        @apply h-[300px];
+    }
+
+    .our-team .swiper-slide.swiper-slide-prev img,
+    .our-team .swiper-slide.swiper-slide-next img {
+        @apply h-[400px];
+    }
+
+    .our-team .swiper-slide.swiper-slide-active img {
+        @apply h-[500px];
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .our-team .swiper-slide img {
+        @apply !h-[300px];
+    }
+}
+}
+/* Stop purging. */
+
+
+
