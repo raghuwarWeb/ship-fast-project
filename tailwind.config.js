@@ -1,68 +1,108 @@
+/** @type {import('tailwindcss').Config} */
+const plugin = require('tailwindcss/plugin');
+const colors = require('tailwindcss/colors');
+const rotateX = plugin(function ({ addUtilities }) {
+ addUtilities({
+    '.rotate-y-180': {
+      transform: 'rotateY(180deg)',
+    },
+ });
+});
 module.exports = {
-  content: [
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
-    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./styles/globals.css",
-  ],
-  theme: {
+ content: ['./app/**/*.tsx'],
+ darkMode: 'class', // Enables dark mode
+ theme: {
+    container: {
+      center: true,
+      padding: '1rem',
+    },
+    screens: {
+      sm: '640px',
+      md: '768px',
+      lg: '1024px',
+      xl: '1142px',
+    },
+    fontFamily: {
+      mulish: ['Mulish', 'sans-serif'],
+      reey: ['reey', 'sans-serif'],
+      sans: ['ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'Noto Sans', 'sans-serif', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'],
+      monospace: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', 'monospace'],
+    },
     extend: {
-      backgroundImage: {
-        gradient:
-          "linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82)",
-      },
       animation: {
-        opacity: "opacity 0.25s ease-in-out",
-        appearFromRight: "appearFromRight 300ms ease-in-out",
-        wiggle: "wiggle 1.5s ease-in-out infinite",
-        popup: "popup 0.25s ease-in-out",
-        shimmer: "shimmer 3s ease-out infinite alternate",
+        'spin-slow': 'spin 5s linear infinite',
       },
-      keyframes: {
-        opacity: {
-          "0%": { opacity: 0 },
-          "100%": { opacity: 1 },
-        },
-        appearFromRight: {
-          "0%": { opacity: 0.3, transform: "translate(15%, 0px);" },
-          "100%": { opacity: 1, transform: "translate(0);" },
-        },
-        wiggle: {
-          "0%, 20%, 80%, 100%": {
-            transform: "rotate(0deg)",
-          },
-          "30%, 60%": {
-            transform: "rotate(-2deg)",
-          },
-          "40%, 70%": {
-            transform: "rotate(2deg)",
-          },
-          "45%": {
-            transform: "rotate(-4deg)",
-          },
-          "55%": {
-            transform: "rotate(4deg)",
+      typography: ({ theme }) => ({
+        DEFAULT: {
+          css: {
+            color: theme('colors.gray'),
+            fontSize: '1.125rem',
           },
         },
-        popup: {
-          "0%": { transform: "scale(0.8)", opacity: 0.8 },
-          "50%": { transform: "scale(1.1)", opacity: 1 },
-          "100%": { transform: "scale(1)", opacity: 1 },
+      }),
+      colors: {
+        primary: {
+          DEFAULT: '#47BDFF',
+          '100': '#F3F4F6',
+          '200': '#E5E7EB',
+          '300': '#D1D5DB',
+          '400': '#9CA3AF',
+          '500': '#6B7280', // This is the default primary color
+          '600': '#4B5563',
+          '700': '#374151',
+          '800': '#1F2937',
+          '900': '#111827',
+          contrast: '#fff'
         },
-        shimmer: {
-          "0%": { backgroundPosition: "0 50%" },
-          "50%": { backgroundPosition: "100% 50%" },
-          "100%": { backgroundPosition: "0% 50%" },
+        // Secondary color
+        secondary: '#B476E5',
+        // Gray color palette
+        gray: {
+          DEFAULT: '#7780A1',
+          dark: '#1C2331',
+          '100': '#F3F4F6',
+          '200': '#E5E7EB',
+          '300': '#D1D5DB',
+          '400': '#9CA3AF',
+          '500': '#6B7280',
+          '600': '#4B5563',
+          '700': '#374151',
+          '800': '#1F2937',
+          '900': '#111827',
+        },
+        // Black color palette
+        black: {
+          DEFAULT: '#08111f',
+          dark: "020711",
+          '100': '#F3F4F6',
+          '200': '#E5E7EB',
+          '300': '#D1D5DB',
+          '400': '#9CA3AF',
+          '500': '#6B7280',
+          '600': '#4B5563',
+          '700': '#374151',
+          '800': '#1F2937',
+          '900': '#111827',
+        },
+        // White color palette
+        white: {
+          DEFAULT: '#fff',
+          '100': '#F3F4F6',
+          '200': '#E5E7EB',
+          '300': '#D1D5DB',
+          '400': '#9CA3AF',
+          '500': '#6B7280',
+          '600': '#4B5563',
+          '700': '#374151',
+          '800': '#1F2937',
+          '900': '#111827',
         },
       },
     },
-  },
-  plugins: [require("daisyui")],
-  daisyui: {
-    // Light & dark themes are added by default (it switches automatically based on OS settings)
-    // You can add another theme among the list of 30+
-    // Add "data-theme='theme_name" to any HTML tag to enable the 'theme_name' theme.
-    // https://daisyui.com/
-    themes: ["light", "dark"],
-  },
+ },
+ plugins: [
+    require('@tailwindcss/line-clamp'),
+    rotateX,
+    require('@tailwindcss/typography'),
+ ],
 };
